@@ -28,6 +28,13 @@ public class TrayIconService : IDisposable
             Visible = true
         };
 
+        _notifyIcon.MouseClick += (s, e) =>
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                _onOpenRequested();
+            }
+        };
         _notifyIcon.DoubleClick += (s, e) => _onOpenRequested();
         SetupContextMenu();
     }

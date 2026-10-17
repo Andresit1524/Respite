@@ -52,12 +52,14 @@ public partial class App : System.Windows.Application
 
         if (_mainWindow == null) return;
 
-        if (_mainWindow.WindowState == WindowState.Minimized)
+        if (_mainWindow.IsVisible)
         {
-            _mainWindow.WindowState = WindowState.Normal;
+            _mainWindow.Hide();
+            return;
         }
 
         _mainWindow.Show();
+        _mainWindow.PositionNearTray();
         _mainWindow.Activate();
     }
 
