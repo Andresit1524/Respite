@@ -24,7 +24,8 @@ public partial class App : System.Windows.Application
             StartupService.SetStartup(_settingsService.Current.StartWithWindows);
         }
 
-        _mainWindow = new MainWindow();
+        var mainViewModel = new ViewModels.MainViewModel(_settingsService, _timerCoordinator);
+        _mainWindow = new MainWindow(mainViewModel);
         _mainWindow.Closing += OnMainWindowClosing;
 
         // Conectar límites duros: al dispararse el descanso forzoso
@@ -42,11 +43,14 @@ public partial class App : System.Windows.Application
 
     private void ShowMainWindow()
     {
-        if (_mainWindow == null)
+        if (_mainWindow == null && _settingsService != null && _timerCoordinator != null)
         {
-            _mainWindow = new MainWindow();
+            var mainViewModel = new ViewModels.MainViewModel(_settingsService, _timerCoordinator);
+            _mainWindow = new MainWindow(mainViewModel);
             _mainWindow.Closing += OnMainWindowClosing;
         }
+
+        if (_mainWindow == null) return;
 
         if (_mainWindow.WindowState == WindowState.Minimized)
         {

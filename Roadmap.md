@@ -1,8 +1,8 @@
 # Lista de características a soportar
-- [ ] Pomodoro configurable
-- [ ] Límites duros
-- [ ] Arranque en inicio (bandeja de sistema)
-- [ ] Interfaz completa e intuitiva
+- [x] Pomodoro configurable
+- [x] Límites duros
+- [x] Arranque en inicio (bandeja de sistema)
+- [x] Interfaz completa e intuitiva
 
 ## Para luego
 - Tema automático
