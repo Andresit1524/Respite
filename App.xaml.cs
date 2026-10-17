@@ -27,6 +27,9 @@ public partial class App : System.Windows.Application
         _mainWindow = new MainWindow();
         _mainWindow.Closing += OnMainWindowClosing;
 
+        // Conectar límites duros: al dispararse el descanso forzoso
+        _timerCoordinator.HardLimitBreakRequired += OnHardLimitBreakRequired;
+
         _trayIconService = new TrayIconService(
             onOpenRequested: ShowMainWindow,
             onExitRequested: ExitApplication,
@@ -62,6 +65,20 @@ public partial class App : System.Windows.Application
             _mainWindow?.Hide();
             _trayIconService?.ShowNotification("Respite sigue activo", "Puedes abrir la aplicación desde la bandeja del sistema.");
         }
+    }
+
+    private void OnHardLimitBreakRequired()
+    {
+        Dispatcher.Invoke(() =>
+        {
+            WindowActionService.MinimizeAllWindows();
+
+            if (_timerCoordinator != null)
+            {
+                var breakWindow = new Views.BreakOverlayWindow(_timerCoordinator.HardLimit);
+                breakWindow.Show();
+            }
+        });
     }
 
     private void TogglePomodoro()
