@@ -99,10 +99,18 @@ public class MainViewModel : ViewModelBase
         set => SetProperty(ref _minimizeToTrayOnClose, value);
     }
 
+    private bool _isSettingsOpen;
+    public bool IsSettingsOpen
+    {
+        get => _isSettingsOpen;
+        set => SetProperty(ref _isSettingsOpen, value);
+    }
+
     public ICommand StartPomodoroCommand { get; }
     public ICommand StopPomodoroCommand { get; }
     public ICommand ResetHardLimitCommand { get; }
     public ICommand SaveSettingsCommand { get; }
+    public ICommand ToggleSettingsCommand { get; }
 
     public MainViewModel(SettingsService settingsService, TimerCoordinatorService coordinator)
     {
@@ -117,6 +125,7 @@ public class MainViewModel : ViewModelBase
         StopPomodoroCommand = new RelayCommand(StopPomodoro);
         ResetHardLimitCommand = new RelayCommand(ResetHardLimit);
         SaveSettingsCommand = new RelayCommand(SaveSettings);
+        ToggleSettingsCommand = new RelayCommand(() => IsSettingsOpen = !IsSettingsOpen);
 
         // Suscripción a eventos de temporizadores
         _coordinator.Pomodoro.Tick += OnPomodoroTick;
