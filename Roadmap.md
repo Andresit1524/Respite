@@ -1,12 +1,15 @@
-# Lista de características a soportar
-- [x] Pomodoro configurable
-- [x] Límites duros
-- [x] Arranque en inicio (bandeja de sistema)
-- [x] Interfaz completa e intuitiva
+## Roadmap de caracteristicas futuras
 
-## Para luego
-- Tema automático
-- Personalización visual (temas de colores)
-- Soporte para más idiomas
-- Interfaz nativa de Win11
-- Modo GenZ (sonidos de memes para notificarte)
+## Interfaz
+- [ ] Interfaz más consistente y eficiente
+- [ ] Tema ajustado a la identidad visual de Respite
+- [ ] Personalización visual (temas de colores)
+- [ ] Soporte para más idiomas
+
+## Funciones
+- [ ] Ajustar el Pomodoro con botones más adecuados
+- [ ] Desactivar funciones (ej. los límites duros)
+
+## Opcionales
+- [ ] Interfaz nativa de Win11
+- [ ] Modo GenZ (sonidos de memes para notificarte)

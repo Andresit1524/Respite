@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="icon.svg" width="20%"/> 
+    <img src="icon.svg" width="10%"/> 
     <h1>Respite</h1>
 </div>
 
