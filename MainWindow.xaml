@@ -28,67 +28,130 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock
+            <StackPanel
                 Grid.Column="0"
                 VerticalAlignment="Center"
-                FontSize="24"
-                FontWeight="Bold"
-                Foreground="#F8FAFC"
-                Text="Respite" />
+                Orientation="Horizontal">
+                <!--  Logotipo de la App basado en icon.svg  -->
+                <Viewbox
+                    Width="28"
+                    Height="28"
+                    Margin="0,0,12,0"
+                    VerticalAlignment="Center">
+                    <Canvas Width="64" Height="64">
+                        <Path
+                            Fill="#059669"
+                            Data="M45.111 11.076a13.198 13.093 0 0 1 .182 2.168 13.198 13.093 0 0 1-3.977 9.367 13.23 13.23 0 0 1 4.037 9.516 13.23 13.23 0 0 1-13.227 13.227 13.23 13.23 0 0 1-13.229-13.227 13.23 13.23 0 0 1 4.008-9.486 13.198 13.093 0 0 1-4.008-9.397 13.198 13.093 0 0 1 .205-2.3A24.69 24.69 0 0 0 7.305 32a24.693 24.693 0 0 0 24.693 24.693A24.693 24.693 0 0 0 56.691 32 24.69 24.69 0 0 0 45.11 11.076z" />
+                        <Path
+                            Fill="#F43F5E"
+                            Data="M32.141 3.9a9.464 9.389 0 0 0-8.242 4.774 9.464 9.389 0 0 0-1.22 4.615 9.464 9.389 0 0 0 3.3 7.125 9.464 9.389 0 0 0 6.162 2.264 9.464 9.389 0 0 0 6.152-2.254 9.464 9.389 0 0 0 3.313-7.135 9.464 9.389 0 0 0-1.152-4.49A9.464 9.389 0 0 0 32.14 3.9" />
+                    </Canvas>
+                </Viewbox>
 
-            <!--  Botón de configuración (círculo SVG como ícono superior derecho)  -->
-            <Button
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Foreground="#F8FAFC"
+                    Text="Respite" />
+            </StackPanel>
+
+            <!--  Botones de acción superior derecha: Configuración y Minimizar a Bandeja  -->
+            <StackPanel
                 Grid.Column="1"
-                Padding="0"
                 VerticalAlignment="Center"
-                Background="Transparent"
-                BorderThickness="0"
-                Command="{Binding ToggleSettingsCommand}"
-                Cursor="Hand"
-                ToolTip="Configuración">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border
-                            x:Name="IconBorder"
-                            Width="36"
-                            Height="36"
-                            Background="#1E293B"
-                            BorderBrush="#334155"
-                            BorderThickness="1"
-                            CornerRadius="18">
-                            <Viewbox
-                                Width="18"
-                                Height="18"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center">
-                                <Canvas Width="24" Height="24">
-                                    <!--  Círculo SVG como ícono provisional  -->
-                                    <Ellipse
-                                        Canvas.Left="3"
-                                        Canvas.Top="3"
-                                        Width="18"
-                                        Height="18"
-                                        Fill="#0F172A"
-                                        Stroke="#38BDF8"
-                                        StrokeThickness="2.5" />
-                                    <Ellipse
-                                        Canvas.Left="9"
-                                        Canvas.Top="9"
-                                        Width="6"
-                                        Height="6"
-                                        Fill="#38BDF8" />
-                                </Canvas>
-                            </Viewbox>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="IconBorder" Property="Background" Value="#334155" />
-                                <Setter TargetName="IconBorder" Property="BorderBrush" Value="#38BDF8" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+                Orientation="Horizontal">
+                <!--  Botón de configuración (círculo SVG provisional)  -->
+                <Button
+                    Margin="0,0,10,0"
+                    Padding="0"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Command="{Binding ToggleSettingsCommand}"
+                    Cursor="Hand"
+                    ToolTip="Configuración">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                x:Name="IconBorder"
+                                Width="36"
+                                Height="36"
+                                Background="#1E293B"
+                                BorderBrush="#334155"
+                                BorderThickness="1"
+                                CornerRadius="18">
+                                <Viewbox
+                                    Width="18"
+                                    Height="18"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    <Canvas Width="24" Height="24">
+                                        <!--  Círculo SVG como ícono provisional  -->
+                                        <Ellipse
+                                            Canvas.Left="3"
+                                            Canvas.Top="3"
+                                            Width="18"
+                                            Height="18"
+                                            Fill="#0F172A"
+                                            Stroke="#38BDF8"
+                                            StrokeThickness="2.5" />
+                                        <Ellipse
+                                            Canvas.Left="9"
+                                            Canvas.Top="9"
+                                            Width="6"
+                                            Height="6"
+                                            Fill="#38BDF8" />
+                                    </Canvas>
+                                </Viewbox>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="IconBorder" Property="Background" Value="#334155" />
+                                    <Setter TargetName="IconBorder" Property="BorderBrush" Value="#38BDF8" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <!--  Botón para cerrar / ocultar a la bandeja (crucial con WindowStyle="None")  -->
+                <Button
+                    Padding="0"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Click="CloseButton_Click"
+                    Cursor="Hand"
+                    ToolTip="Ocultar a la bandeja del sistema">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                x:Name="CloseBorder"
+                                Width="36"
+                                Height="36"
+                                Background="#1E293B"
+                                BorderBrush="#334155"
+                                BorderThickness="1"
+                                CornerRadius="18">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="14"
+                                    FontWeight="Bold"
+                                    Foreground="#94A3B8"
+                                    Text="✕" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="CloseBorder" Property="Background" Value="#E11D48" />
+                                    <Setter Property="Foreground" Value="#FFFFFF" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
         </Grid>
 
         <!--  Panel Principal: Temporizadores (Visible por defecto)  -->
