@@ -1,0 +1,192 @@
+<UserControl
+    x:Class="Respite.Views.SettingsPanelView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border
+        Padding="14"
+        Background="#1E293B"
+        BorderBrush="#334155"
+        BorderThickness="1"
+        CornerRadius="10">
+        <ScrollViewer Focusable="False" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="0,0,6,0">
+                <Grid Margin="0,0,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="#F8FAFC"
+                        Text="Configuración" />
+                    <Button
+                        Grid.Column="1"
+                        Padding="8,2"
+                        Background="#334155"
+                        BorderThickness="0"
+                        Command="{Binding ToggleSettingsCommand}"
+                        Content="✕ Cerrar"
+                        Cursor="Hand"
+                        FontSize="11"
+                        Foreground="#CBD5E1">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="4" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+
+                <!--  Ajustes Tiempos Pomodoro  -->
+                <TextBlock
+                    Margin="0,0,0,6"
+                    FontSize="11"
+                    FontWeight="Bold"
+                    Foreground="#38BDF8"
+                    Text="Pomodoro (minutos)" />
+
+                <Grid Margin="0,0,0,6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="65" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="11"
+                        Foreground="#CBD5E1"
+                        Text="Trabajo:" />
+                    <TextBox
+                        Grid.Column="1"
+                        Padding="4,2"
+                        Background="#0F172A"
+                        BorderBrush="#475569"
+                        FontSize="11"
+                        Foreground="#FFFFFF"
+                        Text="{Binding PomodoroWorkMinutes, UpdateSourceTrigger=PropertyChanged}"
+                        TextAlignment="Center" />
+                </Grid>
+
+                <Grid Margin="0,0,0,6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="65" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="11"
+                        Foreground="#CBD5E1"
+                        Text="Descanso corto:" />
+                    <TextBox
+                        Grid.Column="1"
+                        Padding="4,2"
+                        Background="#0F172A"
+                        BorderBrush="#475569"
+                        FontSize="11"
+                        Foreground="#FFFFFF"
+                        Text="{Binding PomodoroShortBreakMinutes, UpdateSourceTrigger=PropertyChanged}"
+                        TextAlignment="Center" />
+                </Grid>
+
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="65" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="11"
+                        Foreground="#CBD5E1"
+                        Text="Descanso largo:" />
+                    <TextBox
+                        Grid.Column="1"
+                        Padding="4,2"
+                        Background="#0F172A"
+                        BorderBrush="#475569"
+                        FontSize="11"
+                        Foreground="#FFFFFF"
+                        Text="{Binding PomodoroLongBreakMinutes, UpdateSourceTrigger=PropertyChanged}"
+                        TextAlignment="Center" />
+                </Grid>
+
+                <!--  Límites Duros  -->
+                <TextBlock
+                    Margin="0,0,0,6"
+                    FontSize="11"
+                    FontWeight="Bold"
+                    Foreground="#38BDF8"
+                    Text="Límites Duros (minutos)" />
+
+                <Grid Margin="0,0,0,6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="65" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="11"
+                        Foreground="#CBD5E1"
+                        Text="Trabajo continuo (máx 180):" />
+                    <TextBox
+                        Grid.Column="1"
+                        Padding="4,2"
+                        Background="#0F172A"
+                        BorderBrush="#475569"
+                        FontSize="11"
+                        Foreground="#FFFFFF"
+                        Text="{Binding HardLimitIntervalMinutes, UpdateSourceTrigger=PropertyChanged}"
+                        TextAlignment="Center" />
+                </Grid>
+
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="65" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="11"
+                        Foreground="#CBD5E1"
+                        Text="Descanso obligatorio:" />
+                    <TextBox
+                        Grid.Column="1"
+                        Padding="4,2"
+                        Background="#0F172A"
+                        BorderBrush="#475569"
+                        FontSize="11"
+                        Foreground="#FFFFFF"
+                        Text="{Binding HardLimitBreakMinutes, UpdateSourceTrigger=PropertyChanged}"
+                        TextAlignment="Center" />
+                </Grid>
+
+                <!--  Opciones de Sistema  -->
+                <CheckBox
+                    Margin="0,0,0,6"
+                    Content="Iniciar con Windows"
+                    FontSize="11"
+                    Foreground="#CBD5E1"
+                    IsChecked="{Binding StartWithWindows}" />
+
+                <Button
+                    Height="28"
+                    Margin="0,4,0,0"
+                    Background="#059669"
+                    BorderThickness="0"
+                    Command="{Binding SaveSettingsCommand}"
+                    Content="Guardar"
+                    Cursor="Hand"
+                    FontSize="11"
+                    FontWeight="SemiBold"
+                    Foreground="#FFFFFF">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</UserControl>
+

@@ -2,6 +2,7 @@
     x:Class="Respite.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="clr-namespace:Respite.Views"
     Title="Respite"
     Width="380"
     MaxHeight="580"
@@ -53,21 +54,13 @@
                     Grid.Column="0"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <!--  Logotipo de la App basado en icon.svg  -->
-                    <Viewbox
+                    <!--  Logotipo de la App externalizado desde Resources/Icons.xaml  -->
+                    <Image
                         Width="22"
                         Height="22"
                         Margin="0,0,8,0"
-                        VerticalAlignment="Center">
-                        <Canvas Width="64" Height="64">
-                            <Path
-                                Fill="#059669"
-                                Data="M45.111 11.076a13.198 13.093 0 0 1 .182 2.168 13.198 13.093 0 0 1-3.977 9.367 13.23 13.23 0 0 1 4.037 9.516 13.23 13.23 0 0 1-13.227 13.227 13.23 13.23 0 0 1-13.229-13.227 13.23 13.23 0 0 1 4.008-9.486 13.198 13.093 0 0 1-4.008-9.397 13.198 13.093 0 0 1 .205-2.3A24.69 24.69 0 0 0 7.305 32a24.693 24.693 0 0 0 24.693 24.693A24.693 24.693 0 0 0 56.691 32 24.69 24.69 0 0 0 45.11 11.076z" />
-                            <Path
-                                Fill="#F43F5E"
-                                Data="M32.141 3.9a9.464 9.389 0 0 0-8.242 4.774 9.464 9.389 0 0 0-1.22 4.615 9.464 9.389 0 0 0 3.3 7.125 9.464 9.389 0 0 0 6.162 2.264 9.464 9.389 0 0 0 6.152-2.254 9.464 9.389 0 0 0 3.313-7.135 9.464 9.389 0 0 0-1.152-4.49A9.464 9.389 0 0 0 32.14 3.9" />
-                        </Canvas>
-                    </Viewbox>
+                        VerticalAlignment="Center"
+                        Source="{StaticResource RespiteLogoImage}" />
 
                     <TextBlock
                         VerticalAlignment="Center"
@@ -82,7 +75,7 @@
                     Grid.Column="1"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <!--  Botón de Configuración con SVG oficial (settings.svg)  -->
+                    <!--  Botón de Configuración con SVG oficial externalizado  -->
                     <Button
                         Margin="0,0,6,0"
                         Padding="0"
@@ -102,28 +95,12 @@
                                     BorderBrush="#334155"
                                     BorderThickness="1"
                                     CornerRadius="15">
-                                    <Viewbox
+                                    <Image
                                         Width="15"
                                         Height="15"
                                         HorizontalAlignment="Center"
-                                        VerticalAlignment="Center">
-                                        <Canvas Width="24" Height="24">
-                                            <Path
-                                                Stroke="#94A3B8"
-                                                StrokeLineJoin="Round"
-                                                StrokeStartLineCap="Round"
-                                                StrokeEndLineCap="Round"
-                                                StrokeThickness="2"
-                                                Data="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
-                                            <Path
-                                                Stroke="#94A3B8"
-                                                StrokeLineJoin="Round"
-                                                StrokeStartLineCap="Round"
-                                                StrokeEndLineCap="Round"
-                                                StrokeThickness="2"
-                                                Data="M15 12a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3" />
-                                        </Canvas>
-                                    </Viewbox>
+                                        VerticalAlignment="Center"
+                                        Source="{StaticResource SettingsIconImage}" />
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
@@ -173,332 +150,13 @@
                 </StackPanel>
             </Grid>
 
-            <!--  Vista Principal Compacta: Temporizadores  -->
-            <StackPanel Grid.Row="1">
-                <!--  Tarjeta Pomodoro Compacta  -->
-                <Border
-                    Margin="0,0,0,10"
-                    Padding="12"
-                    Background="#1E293B"
-                    BorderBrush="#334155"
-                    BorderThickness="1"
-                    CornerRadius="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+            <!--  Sub-vista 1: Panel de Temporizadores  -->
+            <views:TimerPanelView Grid.Row="1" />
 
-                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
-                                <TextBlock
-                                    FontSize="13"
-                                    FontWeight="SemiBold"
-                                    Foreground="#F8FAFC"
-                                    Text="🍅 Pomodoro" />
-                                <TextBlock
-                                    Margin="6,0,0,0"
-                                    FontSize="11"
-                                    Foreground="#94A3B8"
-                                    Text="{Binding PomodoroStatus}" />
-                            </StackPanel>
-                            <TextBlock
-                                FontSize="26"
-                                FontWeight="Bold"
-                                Foreground="#F43F5E"
-                                Text="{Binding PomodoroDisplay}" />
-                        </StackPanel>
-
-                        <!--  Botones Pomodoro  -->
-                        <StackPanel
-                            Grid.Column="1"
-                            VerticalAlignment="Center"
-                            Orientation="Horizontal">
-                            <Button
-                                Width="68"
-                                Height="30"
-                                Margin="0,0,6,0"
-                                Background="#E11D48"
-                                BorderThickness="0"
-                                Command="{Binding StartPomodoroCommand}"
-                                Content="Iniciar"
-                                Cursor="Hand"
-                                FontSize="12"
-                                FontWeight="SemiBold"
-                                Foreground="#FFFFFF">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="6" />
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-                            <Button
-                                Width="68"
-                                Height="30"
-                                Background="#334155"
-                                BorderThickness="0"
-                                Command="{Binding StopPomodoroCommand}"
-                                Content="Detener"
-                                Cursor="Hand"
-                                FontSize="12"
-                                FontWeight="SemiBold"
-                                Foreground="#E2E8F0">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="6" />
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <!--  Tarjeta Límite Continuo Compacta  -->
-                <Border
-                    Padding="12"
-                    Background="#1E293B"
-                    BorderBrush="#334155"
-                    BorderThickness="1"
-                    CornerRadius="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
-                                <TextBlock
-                                    FontSize="13"
-                                    FontWeight="SemiBold"
-                                    Foreground="#F8FAFC"
-                                    Text="🛡️ Límite PC" />
-                                <TextBlock
-                                    Margin="6,0,0,0"
-                                    FontSize="11"
-                                    Foreground="#94A3B8"
-                                    Text="{Binding HardLimitStatus}" />
-                            </StackPanel>
-                            <TextBlock
-                                FontSize="26"
-                                FontWeight="Bold"
-                                Foreground="#10B981"
-                                Text="{Binding HardLimitDisplay}" />
-                        </StackPanel>
-
-                        <Button
-                            Grid.Column="1"
-                            Width="90"
-                            Height="30"
-                            VerticalAlignment="Center"
-                            Background="#334155"
-                            BorderThickness="0"
-                            Command="{Binding ResetHardLimitCommand}"
-                            Content="Reiniciar"
-                            Cursor="Hand"
-                            FontSize="12"
-                            FontWeight="SemiBold"
-                            Foreground="#E2E8F0">
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="6" />
-                                </Style>
-                            </Button.Resources>
-                        </Button>
-                    </Grid>
-                </Border>
-            </StackPanel>
-
-            <!--  Panel Superpuesto de Configuración  -->
-            <Border
+            <!--  Sub-vista 2: Panel de Configuración (Superpuesto)  -->
+            <views:SettingsPanelView
                 Grid.Row="1"
-                Padding="14"
-                Background="#1E293B"
-                BorderBrush="#334155"
-                BorderThickness="1"
-                CornerRadius="10"
-                Visibility="{Binding IsSettingsOpen, Converter={StaticResource BoolToVisConverter}}">
-                <ScrollViewer
-                    Focusable="False"
-                    VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="0,0,6,0">
-                    <Grid Margin="0,0,0,12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            FontSize="14"
-                            FontWeight="Bold"
-                            Foreground="#F8FAFC"
-                            Text="Configuración" />
-                        <Button
-                            Grid.Column="1"
-                            Padding="8,2"
-                            Background="#334155"
-                            BorderThickness="0"
-                            Command="{Binding ToggleSettingsCommand}"
-                            Content="✕ Cerrar"
-                            Cursor="Hand"
-                            FontSize="11"
-                            Foreground="#CBD5E1">
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="4" />
-                                </Style>
-                            </Button.Resources>
-                        </Button>
-                    </Grid>
-
-                    <!--  Ajustes Tiempos Pomodoro  -->
-                    <TextBlock
-                        Margin="0,0,0,6"
-                        FontSize="11"
-                        FontWeight="Bold"
-                        Foreground="#38BDF8"
-                        Text="Pomodoro (minutos)" />
-
-                    <Grid Margin="0,0,0,6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="65" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            FontSize="11"
-                            Foreground="#CBD5E1"
-                            Text="Trabajo:" />
-                        <TextBox
-                            Grid.Column="1"
-                            Padding="4,2"
-                            Background="#0F172A"
-                            BorderBrush="#475569"
-                            FontSize="11"
-                            Foreground="#FFFFFF"
-                            Text="{Binding PomodoroWorkMinutes, UpdateSourceTrigger=PropertyChanged}"
-                            TextAlignment="Center" />
-                    </Grid>
-
-                    <Grid Margin="0,0,0,6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="65" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            FontSize="11"
-                            Foreground="#CBD5E1"
-                            Text="Descanso corto:" />
-                        <TextBox
-                            Grid.Column="1"
-                            Padding="4,2"
-                            Background="#0F172A"
-                            BorderBrush="#475569"
-                            FontSize="11"
-                            Foreground="#FFFFFF"
-                            Text="{Binding PomodoroShortBreakMinutes, UpdateSourceTrigger=PropertyChanged}"
-                            TextAlignment="Center" />
-                    </Grid>
-
-                    <Grid Margin="0,0,0,10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="65" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            FontSize="11"
-                            Foreground="#CBD5E1"
-                            Text="Descanso largo:" />
-                        <TextBox
-                            Grid.Column="1"
-                            Padding="4,2"
-                            Background="#0F172A"
-                            BorderBrush="#475569"
-                            FontSize="11"
-                            Foreground="#FFFFFF"
-                            Text="{Binding PomodoroLongBreakMinutes, UpdateSourceTrigger=PropertyChanged}"
-                            TextAlignment="Center" />
-                    </Grid>
-
-                    <!--  Límites Duros  -->
-                    <TextBlock
-                        Margin="0,0,0,6"
-                        FontSize="11"
-                        FontWeight="Bold"
-                        Foreground="#38BDF8"
-                        Text="Límites Duros (minutos)" />
-
-                    <Grid Margin="0,0,0,6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="65" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            FontSize="11"
-                            Foreground="#CBD5E1"
-                            Text="Trabajo continuo (máx 180):" />
-                        <TextBox
-                            Grid.Column="1"
-                            Padding="4,2"
-                            Background="#0F172A"
-                            BorderBrush="#475569"
-                            FontSize="11"
-                            Foreground="#FFFFFF"
-                            Text="{Binding HardLimitIntervalMinutes, UpdateSourceTrigger=PropertyChanged}"
-                            TextAlignment="Center" />
-                    </Grid>
-
-                    <Grid Margin="0,0,0,10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="65" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            FontSize="11"
-                            Foreground="#CBD5E1"
-                            Text="Descanso obligatorio:" />
-                        <TextBox
-                            Grid.Column="1"
-                            Padding="4,2"
-                            Background="#0F172A"
-                            BorderBrush="#475569"
-                            FontSize="11"
-                            Foreground="#FFFFFF"
-                            Text="{Binding HardLimitBreakMinutes, UpdateSourceTrigger=PropertyChanged}"
-                            TextAlignment="Center" />
-                    </Grid>
-
-                    <!--  Opciones de Sistema  -->
-                    <CheckBox
-                        Margin="0,0,0,6"
-                        Content="Iniciar con Windows"
-                        FontSize="11"
-                        Foreground="#CBD5E1"
-                        IsChecked="{Binding StartWithWindows}" />
-
-                    <Button
-                        Height="28"
-                        Margin="0,4,0,0"
-                        Background="#059669"
-                        BorderThickness="0"
-                        Command="{Binding SaveSettingsCommand}"
-                        Content="Guardar"
-                        Cursor="Hand"
-                        FontSize="11"
-                        FontWeight="SemiBold"
-                        Foreground="#FFFFFF">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="4" />
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                </StackPanel>
-                </ScrollViewer>
-            </Border>
+                Visibility="{Binding IsSettingsOpen, Converter={StaticResource BoolToVisConverter}}" />
         </Grid>
     </Border>
 </Window>

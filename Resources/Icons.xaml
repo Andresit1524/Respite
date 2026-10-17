@@ -1,0 +1,44 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Icono Respite: Logo Oficial (icon.svg)  -->
+    <DrawingGroup x:Key="RespiteLogoDrawing">
+        <GeometryDrawing Brush="#059669">
+            <GeometryDrawing.Geometry>
+                <PathGeometry Figures="M45.111 11.076a13.198 13.093 0 0 1 .182 2.168 13.198 13.093 0 0 1-3.977 9.367 13.23 13.23 0 0 1 4.037 9.516 13.23 13.23 0 0 1-13.227 13.227 13.23 13.23 0 0 1-13.229-13.227 13.23 13.23 0 0 1 4.008-9.486 13.198 13.093 0 0 1-4.008-9.397 13.198 13.093 0 0 1 .205-2.3A24.69 24.69 0 0 0 7.305 32a24.693 24.693 0 0 0 24.693 24.693A24.693 24.693 0 0 0 56.691 32 24.69 24.69 0 0 0 45.11 11.076z" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+        <GeometryDrawing Brush="#F43F5E">
+            <GeometryDrawing.Geometry>
+                <PathGeometry Figures="M32.141 3.9a9.464 9.389 0 0 0-8.242 4.774 9.464 9.389 0 0 0-1.22 4.615 9.464 9.389 0 0 0 3.3 7.125 9.464 9.389 0 0 0 6.162 2.264 9.464 9.389 0 0 0 6.152-2.254 9.464 9.389 0 0 0 3.313-7.135 9.464 9.389 0 0 0-1.152-4.49A9.464 9.389 0 0 0 32.14 3.9" />
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <DrawingImage x:Key="RespiteLogoImage" Drawing="{StaticResource RespiteLogoDrawing}" />
+
+    <!--  Icono Configuración / Settings (settings.svg)  -->
+    <DrawingGroup x:Key="SettingsIconDrawing">
+        <GeometryDrawing>
+            <GeometryDrawing.Pen>
+                <Pen
+                    Brush="#94A3B8"
+                    EndLineCap="Round"
+                    LineJoin="Round"
+                    StartLineCap="Round"
+                    Thickness="2" />
+            </GeometryDrawing.Pen>
+            <GeometryDrawing.Geometry>
+                <GeometryGroup>
+                    <PathGeometry Figures="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+                    <PathGeometry Figures="M15 12a3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3" />
+                </GeometryGroup>
+            </GeometryDrawing.Geometry>
+        </GeometryDrawing>
+    </DrawingGroup>
+
+    <DrawingImage x:Key="SettingsIconImage" Drawing="{StaticResource SettingsIconDrawing}" />
+
+</ResourceDictionary>
+
